@@ -1,6 +1,7 @@
 import React from 'react'
 import {Route, Switch} from 'react-router-dom';
 import Dashboard from '../Container/Dashboard';
+import Profile from '../Container/Profile';
 
 export default function RouteContainer() {
     return (
@@ -8,7 +9,7 @@ export default function RouteContainer() {
         <div className="sections">
         <Switch>
             <Route exact path="/" ><Dashboard/></Route>
-            {/* <Route  path="/event/:id"></></Route> */}
+            <Route  path="/customer/:id"><Profile/></Route>
         </Switch>
         </div>
         </main>

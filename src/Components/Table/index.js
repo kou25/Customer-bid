@@ -12,8 +12,7 @@ import CancelIcon from "@material-ui/icons/Cancel";
 import { Spin } from "antd";
 import { withStyles } from "@material-ui/core/styles";
 import Switch from "@material-ui/core/Switch";
-import {  useSelector } from "react-redux";
-
+import {Link} from 'react-router-dom'
 
 let defaultData=[]
 const AntSwitch = withStyles((theme) => ({
@@ -75,22 +74,24 @@ export default function Table({ data, spinning }) {
       title: "Name",
       field: "firstname",
       render: (rowData) => (
-        <span style={{ display: "flex", alignItems: "center" }}>
+        <Link to={"/customer/"+rowData.id}><span style={{ display: "flex", alignItems: "center" }} >
           <Avatar style={{ marginRight: 10 }} src={rowData.avatarUrl} />
           {rowData.firstname + " " + rowData.lastname}
-        </span>
+        </span></Link>
       ),
     },
-    { title: "Email", field: "email" },
-    { title: "Phone", field: "phone" },
+    { title: "Email", field: "email" , render:(rowData) => (<Link to={"/customer/"+rowData.id}>{rowData.email}</Link>) },
+    { title: "Phone", field: "phone", render:(rowData) => (<Link to={"/customer/"+rowData.id}>{rowData.phone}</Link>) },
     {
       title: "Premium",
       render: (rowData) =>
-        rowData.hasPremium ? (
+      <Link to={"/customer/"+rowData.id}>
+        {rowData.hasPremium ? (
           <DoneAllIcon style={{ color: "green" }} />
         ) : (
           <CancelIcon style={{ color: "red" }} />
-        ),
+        )}
+        </Link>
     },
     {
       title: "Min/Max bid",
@@ -111,7 +112,7 @@ export default function Table({ data, spinning }) {
         })
       ),
       render: (rowData) => (
-        <p id={rowData.id}>
+        <Link to={"/customer/"+rowData.id}><p id={rowData.id}>
           {rowData?.bids.length &&
             Math.max.apply(
               Math,
@@ -119,7 +120,7 @@ export default function Table({ data, spinning }) {
                 return o.amount;
               })
             )}
-        </p>
+        </p></Link>
       ),
     },
   ];

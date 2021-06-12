@@ -63,13 +63,14 @@ template {
 }
 a {
     background-color: transparent;
-    color: #1954AF;
+    color: #000 !important;
     text-decoration: none;
 }
 a:active,
 a:hover {
     outline: 0;
     text-decoration: none;
+    color: #1954AF !important;
 }
 abbr[title] {
     border-bottom: 1px dotted;
@@ -264,6 +265,7 @@ hr {
     align-items:center;
     min-height: calc(100vh - 90px);
     padding: 20px;
+    min-height: 100vh;
 }
 
 main{
@@ -281,6 +283,10 @@ main{
 .MTableHeader-header-13{
     background-color: inherit !important;
     font-weight: 600 !important;
+}
+th{
+    background-color: inherit !important;
+    font-weight: 600 !important; 
 }
 
 .MuiTableRow-footer .MuiTableCell-root{
