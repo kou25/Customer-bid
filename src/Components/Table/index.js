@@ -101,7 +101,7 @@ export default function Table({ data, spinning }) {
         </Link>
     },
     {
-      title: "Min/Max bid",
+      title: "Max/Min bid",
       render: (rowData) => <AntSwitch  onChange={(e)=>handleToggle(rowData)} />,
     },
     {
