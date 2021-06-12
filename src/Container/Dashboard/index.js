@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { GetCustomers } from "../../Actions";
 
 export default function Dashboard() {
+
   const dispatch = useDispatch();
   const getCustomerData = useSelector(
     (state) => state.CustomerReducer.getCustomerData
@@ -20,7 +21,7 @@ export default function Dashboard() {
 
 
 
-
+//Table container
   return (
     <div className="container">
       <Table data={getCustomerData} spinning={getCustomerLoading} />

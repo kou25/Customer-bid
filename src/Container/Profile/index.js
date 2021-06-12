@@ -21,10 +21,14 @@ export default function Profile() {
     (state) => state.CustomerReducer.getCustomerProfileData
   );
 
+
+  //api call
   React.useEffect(() => {
     dispatch(GetCustomerProfile(id));
   }, [id]);
 
+
+  //animation for bids card
   React.useEffect(() => {
     VanillaTilt.init(document.querySelectorAll(".card"), {
       max: 25,

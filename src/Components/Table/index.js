@@ -15,6 +15,8 @@ import Switch from "@material-ui/core/Switch";
 import {Link} from 'react-router-dom'
 
 let defaultData=[]
+
+//cutomised switch
 const AntSwitch = withStyles((theme) => ({
   root: {
     width: 28,
@@ -49,6 +51,8 @@ const AntSwitch = withStyles((theme) => ({
   checked: {},
 }))(Switch);
 
+
+//Icons for table
 const tableIcons = {
   FirstPage: forwardRef((props, ref) => <FirstPage {...props} ref={ref} />),
   LastPage: forwardRef((props, ref) => <LastPage {...props} ref={ref} />),
@@ -59,15 +63,18 @@ const tableIcons = {
   SortArrow: forwardRef((props, ref) => <ArrowDownward {...props} ref={ref} />),
 };
 
+
+
 export default function Table({ data, spinning }) {
 
+    //Store default data for toggle as false
       useEffect(()=>{
        if(data.length){
            data.map(d=>defaultData.push({id: d?.id , checked:false}))
        }
       },[data])
 
-
+//Table columns
   var columns = [
     { title: "id", field: "id", hidden: true },
     {
@@ -125,9 +132,17 @@ export default function Table({ data, spinning }) {
     },
   ];
 
+
+  //handle toggle switch onchange function
   const handleToggle =(data)=>{
+
+    //match the id of each index 
     let getChecked = defaultData.find(d=> d.id == data.id)
+
+    //toggle value for checked
     getChecked["checked"] = !getChecked["checked"]
+
+    //to set value of min and max bids simultaneously
     defaultData.find(d=> d.id == data.id).checked= getChecked["checked"]
       if(getChecked.checked === true){
           document.getElementById(data?.id).innerHTML = Math.min.apply(
