@@ -10,7 +10,7 @@ import thunk from 'redux-thunk';
 import "./Static/css/primary.css";
 import "./Static/css/grid.css";
 import combineReducers from './Reducers';
-
+import 'antd/dist/antd.css';
 import apiMiddleware from './Middleware';
 const history = createBrowserHistory();
 const middleware = routerMiddleware(history);

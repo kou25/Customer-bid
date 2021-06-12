@@ -262,7 +262,28 @@ hr {
     display: flex;
     justify-content:center;
     align-items:center;
-    height: calc(100vh - 90px);
+    min-height: calc(100vh - 90px);
+    padding: 20px;
 }
 
+main{
+    min-height:100vh;
+    background: linear-gradient(to right top, #65dfc6, #6cdbeb);
+
+}
+.MuiPaper-root{
+    background: linear-gradient(to right bottom, rgba(255,255,255,0.7), rgba(255,255,255,0.3)) !important;
+    border-radius: 1rem !important;
+    padding: 0 20px;
+}
+
+
+.MTableHeader-header-13{
+    background-color: inherit !important;
+    font-weight: 600 !important;
+}
+
+.MuiTableRow-footer .MuiTableCell-root{
+ border: none;
+}
 
