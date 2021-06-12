@@ -1,17 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import RouteContainer from './Routes';
+import { Provider } from 'react-redux';
+import { BrowserRouter} from 'react-router-dom';
+import { routerMiddleware } from 'react-router-redux';
+import { createBrowserHistory } from "history";
+import { applyMiddleware, createStore } from 'redux';
+import thunk from 'redux-thunk';
+import "./Static/css/primary.css";
+import "./Static/css/grid.css";
+import combineReducers from './Reducers';
+
+import apiMiddleware from './Middleware';
+const history = createBrowserHistory();
+const middleware = routerMiddleware(history);
+
+export default createBrowserHistory({forceRefresh: true});
+
+export const store = createStore( combineReducers, 
+    applyMiddleware(thunk, apiMiddleware.getApi, middleware));
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <BrowserRouter>
+    <RouteContainer />
+    </BrowserRouter>
+  </Provider>,
   document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
